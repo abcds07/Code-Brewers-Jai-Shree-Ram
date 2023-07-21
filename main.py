@@ -1,4 +1,5 @@
 import os
+import shutil
 import get_disk_usage
 import analyze_disk_space
 import detect_duplicate_files
@@ -13,6 +14,9 @@ import get_user_input
 import copy_data
 import print_welcome_screen
 import format_size
+import delete_file_by_filepath
+import delete_folder_by_directorypath
+
 
 def main():
     print_welcome_screen.print_welcome_screen()
@@ -58,6 +62,8 @@ def main():
             print("  8. Detect Temporary Files")
             print("  9. Delete Temporary Files")
             print("  10. Copy Data from One Directory to Another")
+            print("  11. Delete File by Filepath")
+            print("  12. Delete Folder by Directory Path")
             print("  0. Exit")
 
             try:
@@ -222,6 +228,12 @@ def main():
                     source_file = input("Enter the source file path: ").strip()
                     destination_dir = input("Enter the destination directory path: ").strip()
                     copy_data.copy_data(source_file, destination_dir)
+                elif option == 11:
+                    file_to_delete = input("Enter the file path to delete: ").strip()
+                    delete_file_by_filepath.delete_file_by_filepath(file_to_delete)
+                elif option == 12:
+                    folder_to_delete = input("Enter the folder path to delete: ").strip()
+                    delete_folder_by_directorypath.delete_folder_by_directorypath(folder_to_delete)
                 else:
                     print("Invalid option. Please enter a valid option number.")
             except ValueError:

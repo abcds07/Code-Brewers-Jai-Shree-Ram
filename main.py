@@ -12,6 +12,7 @@ import delete_temp_files
 import get_user_input
 import copy_data
 import print_welcome_screen
+import format_size
 
 def main():
     print_welcome_screen.print_welcome_screen()
@@ -26,9 +27,9 @@ def main():
         # Disk space analysis for the current directory/drive
         total_space, used_space, free_space = get_disk_usage.get_disk_usage(directory_path)
         print(f"\nDirectory/Drive: {directory_path}")
-        print(f"Total Space: {total_space / (1024 ** 3)} GB")
-        print(f"Used Space: {used_space / (1024 ** 3)} GB")
-        print(f"Free Space: {free_space / (1024 ** 3)} GB")
+        print(f"Total Disk Space: {format_size.format_size(total_space)}")
+        print(f"Used Disk Space: {format_size.format_size(used_space)}")
+        print(f"Free Disk Space: {format_size.format_size(free_space)}")
 
         # Analyze disk space usage and scan for specific file format
         file_sizes, format_sizes, folder_sizes, last_access_times = analyze_disk_space.analyze_disk_space(directory_path)
@@ -36,28 +37,28 @@ def main():
         # Display space breakdown by file formats
         print("\nSpace Breakdown by File Formats:")
         for format, size in format_sizes.items():
-            print(f"{format}: {size / (1024 ** 3)} GB")
+            print(f"  {format}: {format_size.format_size(size)}")
 
         # Display space breakdown by folders and their file formats
         print("\nSpace Breakdown by Folders and File Formats:")
         for folder, format_sizes in folder_sizes.items():
-            print(f"Folder: {os.path.join(directory_path, folder)}")
+            print(f"\nFolder: {os.path.join(directory_path, folder)}")
             for format, size in format_sizes.items():
-                print(f"  {format}: {size / (1024 ** 3)} GB")
+                print(f"    {format}: {format_size.format_size(size)}")
 
         while True:
             print("\nOptions:")
-            print("1. Search for Files of a Specific Format")
-            print("2. Detect Duplicate Files")
-            print("3. Delete Duplicate Files")
-            print("4. Detect Large Files")
-            print("5. Delete Files by Format")
-            print("6. Detect Rarely Accessed Files")
-            print("7. Delete Rarely Accessed Files")
-            print("8. Detect Temporary Files")
-            print("9. Delete Temporary Files")
-            print("10. Copy Data from One Directory to Another")
-            print("0. Exit")
+            print("  1. Search for Files of a Specific Format")
+            print("  2. Detect Duplicate Files")
+            print("  3. Delete Duplicate Files")
+            print("  4. Detect Large Files")
+            print("  5. Delete Files by Format")
+            print("  6. Detect Rarely Accessed Files")
+            print("  7. Delete Rarely Accessed Files")
+            print("  8. Detect Temporary Files")
+            print("  9. Delete Temporary Files")
+            print("  10. Copy Data from One Directory to Another")
+            print("  0. Exit")
 
             try:
                 option = int(input("Enter the option number: "))
@@ -78,7 +79,8 @@ def main():
                         if target_file_paths:
                             print(f"\nFiles with {target_format} format:")
                             for file_path in target_file_paths:
-                                print(file_path)
+                                print(f"    {file_path}")
+                                print()
                         else:
                             print(f"No files found with {target_format} format.")
                 elif option == 2:
@@ -86,7 +88,8 @@ def main():
                     if duplicate_files:
                         print("\nDuplicate Files:")
                         for file_path in duplicate_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
                     else:
                         print("No duplicate files found.")
                 elif option == 3:
@@ -94,7 +97,8 @@ def main():
                     if duplicate_files:
                         print("\nDuplicate Files:")
                         for file_path in duplicate_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_duplicates_response = input("Do you want to delete duplicate files (y/n)? ").lower()
                         if delete_duplicates_response == 'y':
@@ -122,7 +126,8 @@ def main():
                     if large_files:
                         print("\nLarge Files:")
                         for file_path, file_size in large_files:
-                            print(f"{file_path} - {file_size / (1024 ** 2)} MB")
+                            print(f"    {file_path} - {format_size.format_size(file_size)}")
+                            print()
 
                         delete_option = input("Do you want to delete large files (y/n)? ").lower()
                         if delete_option == "y":
@@ -135,6 +140,7 @@ def main():
                                     try:
                                         os.remove(file_path)
                                         print(f"Deleted: {file_path}")
+                                        print()
                                     except OSError as e:
                                         print(f"Error deleting {file_path}: {e}")
                     else:
@@ -150,7 +156,8 @@ def main():
                     if delete_files:
                         print(f"\nFiles with {format_to_delete} format:")
                         for file_path in delete_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_files_response = input("Do you want to delete these files (y/n)? ").lower()
                         if delete_files_response == 'y':
@@ -163,7 +170,8 @@ def main():
                     if rarely_accessed_files:
                         print("\nRarely Accessed Files:")
                         for file_path in rarely_accessed_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_rarely_accessed_response = input("Do you want to delete rarely accessed files (y/n)? ").lower()
                         if delete_rarely_accessed_response == "y":
@@ -176,7 +184,8 @@ def main():
                     if rarely_accessed_files:
                         print("\nRarely Accessed Files:")
                         for file_path in rarely_accessed_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_rarely_accessed_response = input("Do you want to delete rarely accessed files (y/n)? ").lower()
                         if delete_rarely_accessed_response == "y":
@@ -188,7 +197,8 @@ def main():
                     if temp_files:
                         print("\nTemporary Files:")
                         for file_path in temp_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_temp_files_response = input("Do you want to delete temporary files (y/n)? ").lower()
                         if delete_temp_files_response == "y":
@@ -200,7 +210,8 @@ def main():
                     if temp_files:
                         print("\nTemporary Files:")
                         for file_path in temp_files:
-                            print(file_path)
+                            print(f"    {file_path}")
+                            print()
 
                         delete_temp_files_response = input("Do you want to delete temporary files (y/n)? ").lower()
                         if delete_temp_files_response == "y":
@@ -215,7 +226,6 @@ def main():
                     print("Invalid option. Please enter a valid option number.")
             except ValueError:
                 print("Invalid input. Please enter a valid option number.")
-
 
 if __name__ == "__main__":
     main()

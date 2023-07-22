@@ -1,6 +1,8 @@
 # Disk Management Application
 The GUI Disk Manager Application is a powerful tool built using Python and the Tkinter library that provides an intuitive graphical interface to manage files and folders on your computer efficiently. It includes a wide range of features to help you analyze disk space usage, detect and handle duplicate files, identify large files, and manage rarely accessed and temporary files.
 
+![Screenshot 2023-07-22 102118](https://github.com/abcds07/Code-Brewers-Jai-Shree-Ram/assets/107320513/dda23320-5c73-415d-97db-e764ba9601ce)
+
 **Features**
 
 •Disk Space Analysis: Analyze disk space usage with a breakdown of file formats and folder sizes. Get insights into how your disk space is distributed and identify space-consuming files and folders.

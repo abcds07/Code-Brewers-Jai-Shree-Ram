@@ -351,40 +351,40 @@ entry_folder_paths.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 frame_buttons = tk.Frame(frame_main)
 frame_buttons.pack(padx=10, pady=5)
 
-button_analyze = tk.Button(frame_buttons, text="Analyze Disk Space", command=on_analyze_button_click)
+button_analyze = tk.Button(frame_buttons, text="Analyze Disk Space", command=on_analyze_button_click,bg="#00CC6C",fg="white")
 button_analyze.pack(side=tk.LEFT, padx=5)
 
-button_detect_duplicate_files = tk.Button(frame_buttons, text="Detect Duplicate Files", command=on_detect_duplicate_files_button_click)
+button_detect_duplicate_files = tk.Button(frame_buttons, text="Detect Duplicate Files", command=on_detect_duplicate_files_button_click,bg="#2596BE",fg="white")
 button_detect_duplicate_files.pack(side=tk.LEFT, padx=5)
 
-button_delete_duplicate_files = tk.Button(frame_buttons, text="Delete Duplicate Files", command=on_delete_duplicate_files_button_click)
+button_delete_duplicate_files = tk.Button(frame_buttons, text="Delete Duplicate Files", command=on_delete_duplicate_files_button_click,bg="Red", fg="White")
 button_delete_duplicate_files.pack(side=tk.LEFT, padx=5)
 
-button_detect_large_files = tk.Button(frame_buttons, text="Detect Large Files", command=on_detect_large_files_button_click)
+button_detect_large_files = tk.Button(frame_buttons, text="Detect Large Files", command=on_detect_large_files_button_click,bg="#2596BE",fg="white")
 button_detect_large_files.pack(side=tk.LEFT, padx=5)
 
-button_delete_files_by_format = tk.Button(frame_buttons, text="Delete Files by Format", command=on_delete_files_by_format_button_click)
+button_delete_files_by_format = tk.Button(frame_buttons, text="Delete Files by Format", command=on_delete_files_by_format_button_click,bg="Red", fg="White")
 button_delete_files_by_format.pack(side=tk.LEFT, padx=5)
 
-button_detect_rarely_accessed_files = tk.Button(frame_buttons, text="Detect Rarely Accessed Files", command=on_detect_rarely_accessed_files_button_click)
+button_detect_rarely_accessed_files = tk.Button(frame_buttons, text="Detect Rarely Accessed Files", command=on_detect_rarely_accessed_files_button_click,bg="#2596BE",fg="white")
 button_detect_rarely_accessed_files.pack(side=tk.LEFT, padx=5)
 
-button_delete_rarely_accessed_files = tk.Button(frame_buttons, text="Delete Rarely Accessed Files", command=on_delete_rarely_accessed_files_button_click)
+button_delete_rarely_accessed_files = tk.Button(frame_buttons, text="Delete Rarely Accessed Files", command=on_delete_rarely_accessed_files_button_click,bg="Red", fg="White")
 button_delete_rarely_accessed_files.pack(side=tk.LEFT, padx=5)
 
-button_detect_temp_files = tk.Button(frame_buttons, text="Detect Temporary Files", command=on_detect_temp_files_button_click)
+button_detect_temp_files = tk.Button(frame_buttons, text="Detect Temporary Files", command=on_detect_temp_files_button_click,bg="#2596BE",fg="white")
 button_detect_temp_files.pack(side=tk.LEFT, padx=5)
 
-button_delete_temp_files = tk.Button(frame_buttons, text="Delete Temporary Files", command=on_delete_temp_files_button_click)
+button_delete_temp_files = tk.Button(frame_buttons, text="Delete Temporary Files", command=on_delete_temp_files_button_click,bg="Red", fg="White")
 button_delete_temp_files.pack(side=tk.LEFT, padx=5)
 
-button_copy_data = tk.Button(frame_buttons, text="Copy Data", command=on_copy_data_button_click)
+button_copy_data = tk.Button(frame_buttons, text="Copy Data", command=on_copy_data_button_click,bg="#FF9933",fg="White")
 button_copy_data.pack(side=tk.LEFT, padx=5)
 
 frame_clear_button = tk.Frame(frame_main)
 frame_clear_button.pack(fill=tk.BOTH, padx=10, pady=5)
 
-button_clear = tk.Button(frame_clear_button, text="Clear", command=clear_result_text)
+button_clear = tk.Button(frame_clear_button, text="Clear Screen", command=clear_result_text,bg="gray", fg="White")
 button_clear.pack(side=tk.LEFT, padx=5)
 
 frame_delete_file_by_filepath = tk.Frame(frame_main)
@@ -435,7 +435,7 @@ label_file_path.pack(side=tk.LEFT)
 entry_file_path = tk.Entry(frame_delete_file_by_filepath)
 entry_file_path.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-button_delete_file_by_filepath = tk.Button(frame_delete_file_by_filepath, text="Delete File By Path", command=on_delete_file_by_filepath_button_click)
+button_delete_file_by_filepath = tk.Button(frame_delete_file_by_filepath, text="Delete File By Path", command=on_delete_file_by_filepath_button_click,bg="Red", fg="White")
 button_delete_file_by_filepath.pack(side=tk.LEFT, padx=5)
 
 frame_delete_folder_by_directorypath = tk.Frame(frame_main)
@@ -447,16 +447,15 @@ label_folder_path.pack(side=tk.LEFT)
 entry_folder_path = tk.Entry(frame_delete_folder_by_directorypath)
 entry_folder_path.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-button_delete_folder_by_directorypath = tk.Button(frame_delete_folder_by_directorypath, text="Delete Folder by Path", command=on_delete_folder_by_directorypath_button_click)
+button_delete_folder_by_directorypath = tk.Button(frame_delete_folder_by_directorypath, text="Delete Folder by Path", command=on_delete_folder_by_directorypath_button_click,bg="Red", fg="White")
 button_delete_folder_by_directorypath.pack(side=tk.LEFT, padx=5)
 
 frame_result_text = tk.Frame(frame_main)
 frame_result_text.pack(fill=tk.BOTH, padx=10, pady=5, expand=True)
 
 scrollbar_result_text = tk.Scrollbar(frame_result_text, orient=tk.VERTICAL)
-# Set the background color of the result_text widget
 result_text = tk.Text(frame_result_text, wrap=tk.WORD, yscrollcommand=scrollbar_result_text.set)
-result_text.configure(bg="lightgrey")  # Customize the background color
+result_text.configure(bg="lightgrey") 
 scrollbar_result_text.config(command=result_text.yview)
 scrollbar_result_text.pack(side=tk.RIGHT, fill=tk.Y)
 result_text.pack(fill=tk.BOTH, expand=True)

@@ -331,6 +331,15 @@ def on_delete_folder_by_directorypath_button_click():
 def clear_result_text():
     result_text.delete('1.0', tk.END)
 
+def browse_folder():
+    """
+    Open a file dialog to select a single folder path and populate the entry field.
+    """
+    folder_path = filedialog.askdirectory()
+    if folder_path:
+        entry_folder_paths.delete(0, tk.END)
+        entry_folder_paths.insert(tk.END, folder_path)
+
 # GUI setup
 root = tk.Tk()
 root.title("Disk Space Analyzer")
@@ -347,6 +356,10 @@ label_folder_paths.pack(side=tk.LEFT)
 
 entry_folder_paths = tk.Entry(frame_folder_paths)
 entry_folder_paths.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+browse_button = tk.Button(frame_folder_paths, text="Browse", command=browse_folder,bg="#ABEBC6",fg="black")
+browse_button.pack(side=tk.LEFT, padx=5)
+
 
 frame_buttons = tk.Frame(frame_main)
 frame_buttons.pack(padx=10, pady=5)
@@ -454,8 +467,9 @@ frame_result_text = tk.Frame(frame_main)
 frame_result_text.pack(fill=tk.BOTH, padx=10, pady=5, expand=True)
 
 scrollbar_result_text = tk.Scrollbar(frame_result_text, orient=tk.VERTICAL)
+# Set the background color of the result_text widget
 result_text = tk.Text(frame_result_text, wrap=tk.WORD, yscrollcommand=scrollbar_result_text.set)
-result_text.configure(bg="lightgrey") 
+result_text.configure(bg="lightgrey")  # Customize the background color
 scrollbar_result_text.config(command=result_text.yview)
 scrollbar_result_text.pack(side=tk.RIGHT, fill=tk.Y)
 result_text.pack(fill=tk.BOTH, expand=True)
